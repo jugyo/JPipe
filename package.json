@@ -2,7 +2,7 @@
   "name": "jpipe",
   "displayName": "JPipe",
   "description": "VSCode Extension to pipe commands",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "jugyo",
   "repository": "https://github.com/jugyo/JPipe",
   "engines": {
