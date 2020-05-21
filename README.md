@@ -9,12 +9,16 @@ VSCode Extension to pipe commands.
 
 Example of `~/.vscode/jpipe.json`:
 
-```json
+```
 {
   "Open Sibling": [
     "ls ..",
     "code %"
-  ]
+  ],
+  "Switch branch": [
+    "git for-each-ref --count=30 --sort=-committerdate refs/heads/ --format='%(refname:short)'",
+    "git checkout %"
+  ],
 }
 ```
 

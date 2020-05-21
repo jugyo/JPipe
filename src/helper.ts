@@ -25,9 +25,12 @@ export const getIndexInHistory = (command: string) => {
   return index >= 0 ? index : Number.POSITIVE_INFINITY;
 };
 
-export async function execute(command: string): Promise<string[]> {
+export async function execute(
+  command: string,
+  cwd: string | undefined
+): Promise<string[]> {
   return new Promise(function (resolve, reject) {
-    exec(command, (err, stdout) => {
+    exec(command, { cwd }, (err, stdout) => {
       if (err) {
         reject(err);
       } else {
@@ -36,4 +39,22 @@ export async function execute(command: string): Promise<string[]> {
       }
     });
   });
+}
+
+export function getCwd() {
+  const editor = vscode.window.activeTextEditor;
+  if (editor) {
+    console.log(
+      "getWorkspaceFolder",
+      vscode.workspace.getWorkspaceFolder(editor.document.uri)
+    );
+    const folder = vscode.workspace.getWorkspaceFolder(editor.document.uri);
+    if (folder) {
+      return folder.uri.fsPath;
+    }
+  }
+
+  return vscode.workspace.workspaceFolders
+    ? vscode.workspace.workspaceFolders[0].uri.fsPath
+    : undefined;
 }
