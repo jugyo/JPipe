@@ -1,6 +1,6 @@
 # JPipe
 
-VSCode Extension to pipe commands.
+VSCode Extension to pipe shell commands.
 
 ## Commands
 
